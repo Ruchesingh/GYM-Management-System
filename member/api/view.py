@@ -1,4 +1,6 @@
 
+from rest_framework import status
+
 from member.models import Member
 from member.api.serializer import MemberSerializer
 from rest_framework.response import Response
@@ -19,6 +21,27 @@ def membercreate(request):
         serializer.save()
         return Response({
             "message":"Member Successfully created"
-        },201)
+        },status.HTTP_201_CREATED)
     else:
-        return Response(serializer.errors,422)
+        return Response(serializer.errors,status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+@api_view(['PUT'])
+def memberupdate(request,id):
+    member = Member.objects.get(id=id)
+    serializer = MemberSerializer(member, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({
+            "message":"Member Successfully updated"
+        }, status.HTTP_200_OK)
+    else:
+        return Response(serializer.errors,status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+@api_view(['DELETE'])
+def memberdelete(request,id):
+    member = Member.objects.filter(id=id)
+    member.delete()
+    return Response({
+        "message":"Member successfully deleted"
+    }, 204)
+    
