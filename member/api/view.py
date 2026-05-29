@@ -1,4 +1,5 @@
 
+from drf_spectacular.utils import extend_schema
 from rest_framework import status
 
 from member.models import Member
@@ -11,6 +12,12 @@ def memberlist(request):
     data = Member.objects.all()
     serializer  = MemberSerializer(data, many=True)
     return Response(serializer.data)
+
+@extend_schema(
+    request=MemberSerializer,
+    responses=MemberSerializer,
+       tags=["Test"]
+)
 
 
 @api_view(['POST'])

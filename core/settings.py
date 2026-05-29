@@ -132,7 +132,7 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'GYM MANAGEMENT SYSTEM',
-    'DESCRIPTION': 'This is gym',
+    'DESCRIPTION': 'Gym Management System is a Django-based application used to manage gym members, trainers, attendance, and payments efficient.',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
