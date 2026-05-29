@@ -12,3 +12,25 @@ class Subscription(models.Model):
 def __str__(self):
         return self.full_name
     
+class meta:
+    db_table="subscription"    
+
+class GymMembership(models.Model):
+    
+    trainer = models.ForeignKey(
+        "trainer.Trainer",
+        on_delete=models.CASCADE,
+        null=True,blank=True
+    )
+    member=models.ForeignKey("member.Member",on_delete=models.CASCADE)
+    subscription=models.ForeignKey(Subscription,on_delete=models.CASCADE)
+    days = models.PositiveIntegerField()
+    price = models.PositiveIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.subsrciption
+
+    class Meta:
+        db_table = "gymmembership"
