@@ -9,11 +9,11 @@ class Subscription(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     
-def __str__(self):
-        return self.full_name
+    def __str__(self):
+        return self.name
     
-class meta:
-    db_table="subscription"    
+    class meta:
+      db_table="subscription"    
 
 class GymMembership(models.Model):
     
@@ -25,12 +25,11 @@ class GymMembership(models.Model):
     member=models.ForeignKey("member.Member",on_delete=models.CASCADE)
     subscription=models.ForeignKey(Subscription,on_delete=models.CASCADE)
     days = models.PositiveIntegerField()
-    price = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.subsrciption
-
+        return f'{self.subscription}'
     class Meta:
         db_table = "gymmembership"

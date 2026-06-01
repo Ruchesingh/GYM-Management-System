@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from subscription.models import Subscription
+from subscription.models import GymMembership, Subscription
 
 # Register your models here.
 
@@ -37,3 +37,29 @@ class SubscriptionAdmin(admin.ModelAdmin):
         'created_at',
         'updated_at',
     )
+from django.contrib import admin
+@admin.register(GymMembership)
+class GymMembershipAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "member",
+        "trainer",
+        "subscription",
+        "days",
+        "price",
+        "created_at",
+    )
+
+    list_filter = (
+        "trainer",
+        "created_at",
+    )
+
+    readonly_fields = (
+        'created_at',
+        'updated_at',
+        "created_at",
+        "updated_at",
+    )
+
+    ordering = ("-created_at",)
