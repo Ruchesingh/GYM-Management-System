@@ -23,7 +23,8 @@ class GymMemberShipSerializer(serializers.ModelSerializer):
         data['member'] = instance.member.first_name
         data['subscription']=instance.subscription.name
         data['trainer']=instance.trainer.full_name if instance.trainer is not None else None
-        return data    
+        return data  
+    
     def create(self, validated_data):
         print(validated_data)
         one_day_price = validated_data['subsrciption'].price / validated_data['subsrciption'].days
