@@ -8,7 +8,7 @@ class AttendanceView(GenericAPIView):
     queryset = Attendance.objects.all()
     serializer_class = AttendanceSerializer
 
-    """"def patch(self,request,*args, **kwargs):
+    """def patch(self,request,*args, **kwargs):
         print(kwargs)
         return Response({
             "message":"Patch request"

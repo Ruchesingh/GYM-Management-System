@@ -46,6 +46,7 @@ INSTALLED_APPS = [
      "trainer",
      "subscription",
      "attendance",
+     "exercise",
      
 ]
 
@@ -143,3 +144,12 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+
+# Celery Configuration Options
+CELERY_TIMEZONE = "Asia/Kathmandu"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+#celery flower for dashboard
+FLOWER_URL = "http://localhost:5555"
+FLOWER_URL_PREFIX = "flower"
