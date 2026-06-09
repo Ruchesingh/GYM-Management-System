@@ -51,9 +51,8 @@ INSTALLED_APPS = [
      "subscription",
      "attendance",
      "exercise",
+     "dietPlan",
      "txn"
-     
-     
 ]
 
 MIDDLEWARE = [
@@ -175,7 +174,8 @@ CELERY_BEAT_SCHEDULE={
     'mark_attendance':{
         'task':'attendance.tasks. mark_member_attendance',
         'schedule':crontab(
-            minute=2
+            minute=2,
+            day_of_week='0-5'
         ),
     },
     

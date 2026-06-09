@@ -4,6 +4,7 @@ from django.db import models
 
 class Status(models.TextChoices):
     INITIAL="Initial"
+    KHALTI_PROCESS="Khalti Process"
     COMPLETED="Completed"
     PENDING="Pending"
     USER_CANCELED="User canceled"
@@ -15,6 +16,11 @@ class TXN(models.Model):
     status=models.CharField(max_length=20,choices=Status.choices,default=Status.INITIAL)
     txn_id=models.CharField(max_length=50,blank=True,null=True)
     pidx=models.CharField(max_length=30,null=True,blank=True)
-    loaction=models.TextField(null=True, blank=True)
+    location=models.TextField(null=True, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+    
+    
+def __str__(self):
+    return self.name
+    
