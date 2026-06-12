@@ -3,7 +3,7 @@ import requests
 
 def khalti_payment(member, txn):
     payload = {
-        "return_url": "https://example.com/payment/",
+        "return_url": "http://localhost:8000/txn/callback/",
         "website_url": "https://kmc.com/",
         "amount": int(txn.amount * 100),
         "purchase_order_id": txn.id,
@@ -27,7 +27,7 @@ def khalti_payment(member, txn):
 
     khalti_url = "https://dev.khalti.com/api/v2/epayment/initiate/"
     headers = {
-        "Authorization":"key c430ac46fb6443f8874063a807cfa39d ",
+        "Authorization":"key c430ac46fb6443f8874063a807cfa39d",
         "Content-Type": "application/json",
     }
     r = requests.post(url=khalti_url, headers=headers, data=json.dumps(payload))
